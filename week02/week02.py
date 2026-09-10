@@ -2,10 +2,11 @@ import numpy as np
 import pandas as pd
 
 df1 = pd.read_csv("./bike.csv")
-#print(df1.loc[df1['season'] == 3, ['season', 'humidity', 'windspeed', 'casual' ,'registered']])
-#print(df1.loc[df1['season'] == 3, 'humidity':'registered'])
-#print(df1['weather'].value_counts())
-#print(df1.loc[(df1['season'] != 4)&(df1['weather'] != 1)])
-#temp = df1.loc[(df1['season'] != 4)&(df1['weather'] != 1)]
-#print(temp['weather']==1)
-print(df1.loc[3, 'humidity'])
+#print(df1.info())
+#print(df1.select_dtypes(include="float"))
+#print(df1.select_dtypes(exclude="float"))
+#print(df1.filter(regex="d..y"))
+#print(df1.filter(items=['windspeed', 'season']))
+df2 = df1.set_index('datetime')
+#print(df2)
+print(df2.filter(like='00:00:00', axis=0))
