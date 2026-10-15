@@ -19,6 +19,6 @@ s, i, r, _, _ = linregress(df1['MILES*'], df1['DURATION*'])  # x축은 운행거
 # print(df1['DURATION*'].describe())
 
 fig, ax = plt.subplots()
-sns.regplot(x=df1['MILES*'], y=df1['DURATION*'], data=df1, ax=ax, line_kws={'label': 'y={:.2f}x+{:.2f}, R^2={:.2f}'.format(s, i, r**2)})
+sns.regplot(x=df1['MILES*'], y=df1['DURATION*'], data=df1, ax=ax, line_kws={'label': f'y={s:.2f}x+{i:.2f}, R^2={r**2:.2f}'})
 plt.legend()
 plt.show()
