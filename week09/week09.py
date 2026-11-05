@@ -1,13 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('us_confirmed.csv')
-df['Date'] = pd.to_datetime(df['Date'])  # str -> datetime
-df = df.set_index('Date').sort_values('Date')
+df = pd.read_csv('product_inspection.csv')
+df['date'] = pd.to_datetime(df['date'])
 print(df.head())
-
-# print(df['Province/State'].unique())
-states = df['Province/State'].unique()[3:6]  # ['Iowa', 'Wisconsin', 'California']
-# print(states)
-df = df[df['Province/State'].isin(states)]
-print(df)
-print(df.groupby([pd.Grouper(freq='1W'), 'Province/State'])['Case'].mean())  # 1주 단위, 월 단위 ME
+print(df.tail())
