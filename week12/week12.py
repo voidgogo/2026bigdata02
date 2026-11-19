@@ -13,3 +13,10 @@ fig = px.scatter(
     width=500, height=400, color='Entity', color_discrete_sequence=px.colors.qualitative.Set2, size='No. of Internet Users'
 )
 fig.show()
+
+df2 = sns.load_dataset('tips')
+fig = px.scatter(
+    data_frame=df2, x='total_bill', y='tip', color='smoker', size='size', symbol='time',
+    width=600, height=400, color_discrete_sequence=px.colors.qualitative.Vivid
+)
+fig.show()
