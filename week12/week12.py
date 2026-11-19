@@ -10,5 +10,6 @@ s, i, r, _, _ = linregress(df1['total_bill'], df1['tip'])  # x축은 전체지�
 print(s, i, r)  # 기울기, 절편, 상관계수(-1~1) 출력. 강한 양의 상관관계.
 
 fig, ax = plt.subplots()
-sns.regplot(x='total_bill', y='tip', data=df1, ax=ax)
+#sns.regplot(x='total_bill', y='tip', data=df1, ax=ax)
+sns.regplot(x='total_bill', y='tip', data=df1, ax=ax, ci=None)  # 신뢰구간(Confidence Interval) 삭제
 plt.show()
