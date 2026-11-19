@@ -1,15 +1,16 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import linregress
+import numpy as np
 
-df1 = sns.load_dataset('tips')
-
-# review week07
-# s: slope, i: intercept, r: correlation
-s, i, r, _, _ = linregress(df1['total_bill'], df1['tip'])  # x축은 전체지불금액, y축은 팁(미국)
-print(s, i, r)  # 기울기, 절편, 상관계수(-1~1) 출력. 강한 양의 상관관계.
+x = np.arange(-2, 10, 1)
+y = x**3 - 9*x**2 + x + 4
+#y = 9*x**2 + x + 4
 
 fig, ax = plt.subplots()
-#sns.regplot(x='total_bill', y='tip', data=df1, ax=ax)
-sns.regplot(x='total_bill', y='tip', data=df1, ax=ax, ci=None)  # 신뢰구간(Confidence Interval) 삭제
+#sns.regplot(x=x, y=y, ax=ax, order=3)
+sns.regplot(
+    x=x, y=y, ax=ax, order=3,
+    scatter_kws={'s':50}, line_kws={'color':'blue', 'linestyle':'-.'}
+)
 plt.show()
