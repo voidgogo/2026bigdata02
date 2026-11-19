@@ -1,16 +1,14 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import linregress
-import numpy as np
 
-x = np.arange(-2, 10, 1)
-y = x**3 - 9*x**2 + x + 4
-#y = 9*x**2 + x + 4
+df1 = sns.load_dataset('tips')
+
+# s: slope, i: intercept, r: correlation
+s, i, r, _, _ = linregress(df1['total_bill'], df1['tip'])
+print(s, i, r)
 
 fig, ax = plt.subplots()
-#sns.regplot(x=x, y=y, ax=ax, order=3)
-sns.regplot(
-    x=x, y=y, ax=ax, order=3,
-    scatter_kws={'s':50}, line_kws={'color':'blue', 'linestyle':'-.'}
-)
+sns.regplot(x='total_bill', y='tip', data=df1, ax=ax, ci=None, line_kws={'label': f'y={s:.2f}x+{i:.2f}, R^2={r**2:.2f}'})
+plt.legend()
 plt.show()
