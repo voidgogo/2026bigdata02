@@ -4,13 +4,10 @@ import seaborn as sns
 import plotly.express as px
 
 df = sns.load_dataset('tips')
-
-fig, ax = plt.subplots()
-#sns.histplot(df, x='total_bill', ax=ax)
-#sns.histplot(df, x='total_bill', ax=ax, bins=8, binwidth=6)  # 계급구간 8
-#sns.histplot(df, x='total_bill', ax=ax, hue='time')
-sns.histplot(df, x='total_bill', ax=ax, hue='time', multiple='stack')
-plt.show()
+#fig = px.histogram(data_frame=df, x='total_bill', width=550)
+#fig = px.histogram(data_frame=df, x='total_bill', width=550, nbins=20)
+fig = px.histogram(data_frame=df, x='total_bill', width=550, color='time', barmode='overlay')
+fig.show()
 
 
 
